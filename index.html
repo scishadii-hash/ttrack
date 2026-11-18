@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0e0f10"><meta name="apple-mobile-web-app-capable" content="yes"><title>T-TRACK</title><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0f10;--p:#17181a;--p2:#212326;--ln:#282a2d;--ink:#f2efe9;--mu:#8b8d91;--or:#ff7a1a;--gr:#4cc38a;--rd:#ff7a6b;--bl:#8fbfff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;color:var(--ink);font:400 15px/1.5 Cairo,system-ui,sans-serif;font-variant-numeric:tabular-nums;padding-bottom:112px;background:radial-gradient(ellipse at 85% -10%,#ff7a1a14,transparent 45%),var(--bg)}
+button,input{font:inherit;color:inherit}button{border:0;cursor:pointer;background:none}
+:focus-visible{outline:2px solid var(--or);outline-offset:2px}
+.wrap{max-width:640px;margin:auto;padding:14px 16px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:6px 0 16px}
+.brand{font-weight:800;font-size:20px;letter-spacing:.5px}.brand i{color:var(--or);font-style:normal}
+.clock{font-size:13px;color:var(--mu);background:var(--p);border:1px solid var(--ln);border-radius:10px;padding:5px 10px}
+h2{font-size:20px;margin:6px 0 14px;font-weight:800}h3{font-size:15px;margin:0 0 8px}
+.lb{font-size:12px;color:var(--mu)}.sec{font-size:14px;font-weight:700;margin:22px 2px 10px}
+.card{background:var(--p);border:1px solid var(--ln);border-radius:16px;padding:14px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.st{background:var(--p);border:1px solid var(--ln);border-radius:14px;padding:12px 14px;min-width:0}
+.st b{display:block;font-size:22px;font-weight:800;margin-top:1px;white-space:nowrap}.or{color:#ffa45c}
+.dl{font-size:11px;min-height:16px}.up{color:var(--gr)}.down{color:var(--rd)}.flat{color:var(--mu)}
+.hero{position:relative;overflow:hidden;display:flex;gap:16px;align-items:center;background:linear-gradient(120deg,#231b14,#17181a 60%);border:1px solid #3a2c20;border-radius:22px;padding:18px;margin-bottom:12px}
+.hero:before{content:"";position:absolute;width:220px;height:220px;right:-70px;top:-60px;background:radial-gradient(#ff7a1a2e,transparent 65%);pointer-events:none}
+.ring{position:relative;width:128px;height:128px;flex:none}.ring svg{transform:rotate(-90deg)}
+.ring .n{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ring .n b{font-size:38px;font-weight:800;line-height:1}.ring .n span{font-size:11px;color:var(--mu)}
+#ringFg{transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1)}
+.hinfo{flex:1;min-width:0;position:relative}
+.state{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--mu)}
+.dot{width:8px;height:8px;border-radius:50%;background:#555}.run .dot{background:var(--gr);box-shadow:0 0 0 4px #4cc38a30;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px #4cc38a00}}
+.timer{font-size:30px;font-weight:800;letter-spacing:.5px;margin:2px 0}.goal{font-size:12px;color:var(--mu);margin-bottom:10px}
+.btn{display:block;width:100%;background:var(--or);color:#1a0d00;font-weight:800;border-radius:12px;padding:11px 14px;transition:transform .15s,filter .15s}
+.btn:active{transform:scale(.97)}.btn:hover{filter:brightness(1.07)}
+.btn.stop{background:#2c2f33;color:var(--ink);border:1px solid #3a3d41}.btn.ghost{background:var(--p2);color:var(--ink);border:1px solid var(--ln)}.btn.bad{color:var(--rd)}
+.banner{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#2a2117;border:1px solid #4a3722;border-radius:14px;padding:10px 14px;margin-bottom:12px;font-size:13px}
+.banner button{color:#ffa45c;font-weight:700}
+details{margin-bottom:12px}summary{cursor:pointer;color:var(--mu);font-size:13px;padding:6px 2px}
+.input{width:100%;min-height:46px;background:#101112;border:1px solid #34363a;border-radius:12px;padding:9px 12px;margin-top:5px}
+.input:focus{border-color:var(--or);outline:none;box-shadow:0 0 0 3px #ff7a1a30}
+.od{background:var(--p);border:1px solid var(--ln);border-radius:14px;padding:12px 14px;margin-bottom:9px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}.od .row+.row{margin-top:7px}
+.badge{font-size:11px;font-weight:700;border-radius:6px;padding:2px 8px;background:#3a281a;color:#ffa45c}.badge.visa{background:#1f2c38;color:var(--bl)}
+.ib{background:var(--p2);border:1px solid var(--ln);border-radius:9px;padding:5px 12px;font-size:12px;color:#ddd}.ib.bad{color:var(--rd)}
+.empty{text-align:center;color:var(--mu);font-size:13px;padding:26px 12px;border:1px dashed #34363a;border-radius:14px}
+.seg{display:flex;background:var(--p);border:1px solid var(--ln);border-radius:12px;padding:3px}
+.seg button{flex:1;padding:8px;border-radius:9px;color:#bbb}.seg .on{background:var(--or);color:#1a0d00;font-weight:800}
+.pnav{display:flex;align-items:center;justify-content:space-between;margin:12px 0}.pnav button{width:38px;height:38px;border-radius:10px;background:var(--p);border:1px solid var(--ln);font-size:18px}
+.chart{display:flex;align-items:flex-end;gap:6px;height:150px;padding-bottom:22px}
+.bc{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
+.bar{width:70%;max-width:30px;border-radius:6px 6px 2px 2px;background:#5a3a22;min-height:3px;transform-origin:bottom;animation:grow .6s cubic-bezier(.2,.8,.2,1) both}.bar.top{background:linear-gradient(#ffb056,var(--or))}
+@keyframes grow{from{transform:scaleY(0)}}
+.bv{font-size:10px;color:#ddd;margin-bottom:2px}.bl{position:absolute;bottom:-20px;font-size:10px;color:var(--mu);white-space:nowrap}
+.hr{display:grid;grid-template-columns:50px 1fr 28px;gap:8px;align-items:center;margin:9px 0;font-size:12px}
+.tr{height:8px;background:#2a2c2f;border-radius:9px;overflow:hidden}.fl{height:100%;background:linear-gradient(90deg,#ffb056,var(--or));border-radius:9px}
+.split{display:flex;height:12px;border-radius:9px;overflow:hidden;background:#2a2c2f;margin:8px 0}.split i{display:block;height:100%;transition:width .5s}
+.insight{background:var(--p);border:1px solid var(--ln);border-right:3px solid var(--or);border-radius:12px;padding:10px 14px;font-size:13px;margin-bottom:12px}
+.nav{position:fixed;bottom:0;left:0;right:0;z-index:5;background:#121314ee;backdrop-filter:blur(12px);border-top:1px solid var(--ln);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.ni{max-width:640px;margin:auto;display:grid;grid-template-columns:1fr 1fr 74px 1fr 1fr;align-items:center}
+.nav button.t{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;color:var(--mu);padding:6px 0;border-radius:10px}.nav button.t.on{color:#ffa45c;font-weight:700}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fab{width:60px;height:60px;border-radius:50%;margin:-30px auto 0;background:var(--or);color:#1a0d00;display:grid;place-items:center;box-shadow:0 8px 24px #ff7a1a55,0 0 0 6px var(--bg);transition:transform .15s}.fab:active{transform:scale(.92)}.fab svg{width:28px;height:28px;stroke-width:2.4}
+.page{display:none}.page.on{display:block;animation:fade .2s ease-out}@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.mb{position:fixed;inset:0;z-index:10;background:#000b;backdrop-filter:blur(5px);display:none;align-items:flex-end;justify-content:center}.mb.on{display:flex}
+.modal{width:min(640px,100%);max-height:92vh;overflow:auto;background:#17181a;border:1px solid #34363a;border-radius:22px 22px 0 0;padding:16px 16px calc(22px + env(safe-area-inset-bottom));animation:up .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.mh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.mh h3{font-size:18px;margin:0}.x{width:36px;height:36px;border-radius:10px;background:var(--p2)}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}.pay button{padding:12px;border-radius:12px;background:var(--p2);border:1px solid #34363a;font-weight:700}.pay .on{border-color:var(--or);background:#33231a}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.chips button{background:var(--p2);border:1px solid var(--ln);border-radius:20px;padding:3px 12px;font-size:13px}.chips button:active{border-color:var(--or)}
+.f{display:grid;gap:12px;margin-bottom:12px}.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hide{display:none!important}
+.calc{background:#101112;border:1px dashed #3a3d41;border-radius:12px;padding:9px 12px;font-size:13px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.toast{position:fixed;top:calc(14px + env(safe-area-inset-top));left:50%;transform:translate(-50%,-90px);z-index:20;display:flex;gap:14px;align-items:center;background:#25272a;border:1px solid #44474b;border-radius:12px;padding:10px 16px;box-shadow:0 10px 35px #0008;transition:transform .25s cubic-bezier(.2,.8,.2,1);max-width:92vw}.toast.on{transform:translate(-50%,0)}.toast button{color:#ffa45c;font-weight:800}
+.pf{background:linear-gradient(120deg,#1b2a22,#17181a 70%);border:1px solid #2c4136;border-radius:16px;padding:14px;margin-bottom:10px}.pf>b{display:block;font-size:30px;font-weight:800;color:var(--gr)}.pfr{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mu);margin-top:6px}.pfr b{display:block;color:var(--ink);font-size:14px}.st.wide{grid-column:1/-1}.rg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chips button.on{border-color:var(--or);background:#33231a}.ex{display:flex;align-items:center;gap:12px}.ex .ic{width:40px;height:40px;border-radius:12px;background:var(--p2);display:grid;place-items:center;font-size:19px;flex:none}.ex .m{flex:1;min-width:0}.ex .m div:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important}}
+</style></head><body><div class="wrap">
+<div class="top"><div><div class="brand">T<i>-TRACK</i></div><div class="lb">متابعة شغل الطيار</div></div><span class="clock" id="clock">--:--</span></div>
+
+<section class="page on" id="home">
+<div id="bk" class="banner hide"><span>عدّى أكتر من أسبوع من آخر نسخة احتياطية.</span><button onclick="go('settings')">خد نسخة</button></div>
+<div class="insight" id="greet"></div><div class="hero" id="hero"><div class="ring"><svg width="128" height="128" viewBox="0 0 128 128"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb056"/><stop offset="1" stop-color="#ff7a1a"/></linearGradient></defs><circle cx="64" cy="64" r="54" fill="none" stroke="#2a2c2f" stroke-width="10"/><circle id="ringFg" cx="64" cy="64" r="54" fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-dasharray="339.3" stroke-dashoffset="339.3"/></svg><div class="n"><b id="hCount">0</b><span>أوردر النهارده</span></div></div>
+<div class="hinfo"><div class="state"><span class="dot"></span><span id="sState">—</span></div><div class="timer" id="timer">—</div><div class="goal" id="goalTxt"></div><button class="btn" id="shiftBtn" onclick="toggleShift()">ابدأ الشيفت</button></div></div>
+<div class="pf"><div class="lb">صافي الربح النهارده</div><b id="pfNet">0</b><div class="pfr"><span>الأوردرات<b id="pfE">0</b></span><span>Tips<b id="pfT">0</b></span><span>المصاريف<b id="pfX">0</b></span></div></div>
+<div class="grid"><div class="st"><div class="lb">أوردر / ساعة</div><b class="or" id="hRate">—</b></div><div class="st"><div class="lb">متوسط مدة الأوردر</div><b id="hDur">—</b></div><div class="st"><div class="lb">Tips</div><b class="or" id="hTips">0</b></div><div class="st"><div class="lb">فرق الكاش</div><b id="hDiff">0</b></div></div>
+<details class="card" style="margin-top:12px"><summary>تعديل وقت الشيفت يدويًا</summary><div class="f2"><label class="lb">البداية<input class="input" type="time" id="sStart" onchange="saveShift()"></label><label class="lb">النهاية<input class="input" type="time" id="sEnd" onchange="saveShift()"></label></div></details>
+<div class="sec">أوردرات النهارده</div><div id="hOrders"></div><div class="row sec"><span>مصاريف النهارده <b class="or" id="hExpT"></b></span><button class="ib" onclick="openExp()">＋ مصروف</button></div><div id="hExp"></div></section>
+
+<section class="page" id="analytics"><h2>التحليلات</h2>
+<div class="seg"><button id="bW" class="on" onclick="setPeriod('week')">أسبوعي</button><button id="bM" onclick="setPeriod('month')">شهري</button></div>
+<div class="pnav"><button onclick="mv(-1)" aria-label="السابق">›</button><b id="pTitle"></b><button onclick="mv(1)" aria-label="التالي">‹</button></div>
+<div class="insight" id="aIns"></div>
+<div class="grid"><div class="st"><div class="lb">الأوردرات</div><b id="aCount">0</b><div class="dl" id="dCount"></div></div><div class="st"><div class="lb">ساعات الشيفت</div><b id="aHours">0</b><div class="dl">&nbsp;</div></div><div class="st"><div class="lb">أوردر / ساعة</div><b class="or" id="aRate">—</b><div class="dl" id="dRate"></div></div><div class="st"><div class="lb">Tips</div><b class="or" id="aTips">0</b><div class="dl" id="dTips"></div></div><div class="st"><div class="lb">فرق الكاش</div><b id="aDiff">0</b><div class="dl">&nbsp;</div></div><div class="st"><div class="lb">Tips / أوردر</div><b id="aTpo">0</b><div class="dl">&nbsp;</div></div><div class="st"><div class="lb">دخل الأوردرات</div><b id="aEarn">0</b><div class="dl">&nbsp;</div></div><div class="st"><div class="lb">المصاريف</div><b id="aExp">0</b><div class="dl">&nbsp;</div></div><div class="st wide" style="border-color:#2c4136"><div class="lb">صافي الربح (أوردرات + Tips − مصاريف)</div><b id="aNet" style="color:var(--gr);font-size:26px">0</b><div class="dl" id="dNet"></div></div></div>
+<div class="sec">الأوردرات حسب اليوم</div><div class="card"><div class="chart" id="chart"></div></div>
+<div class="sec">ساعات الذروة</div><div class="card" id="peak"></div>
+<div class="sec">طرق الدفع</div><div class="card"><div class="split"><i id="sC" style="background:var(--or)"></i><i id="sV" style="background:var(--bl)"></i></div><div class="row lb"><span>● كاش <b id="cC" style="color:var(--ink)">0</b></span><span>● فيزا <b id="cV" style="color:var(--ink)">0</b></span></div></div></section>
+
+<section class="page" id="history"><h2>سجل الأيام</h2>
+<label class="lb">اختار التاريخ<input class="input" type="date" id="hDate" onchange="renderHistory()"></label>
+<div class="grid" style="margin-top:12px"><div class="st"><div class="lb">الأوردرات</div><b id="yCount">0</b></div><div class="st"><div class="lb">أوردر / ساعة</div><b id="yRate">—</b></div><div class="st"><div class="lb">Tips</div><b class="or" id="yTips">0</b></div><div class="st"><div class="lb">فرق الكاش</div><b id="yDiff">0</b></div><div class="st wide" style="border-color:#2c4136"><div class="lb">صافي الربح</div><b id="yNet" style="color:var(--gr);font-size:26px">0</b></div></div>
+<div class="sec">الأوردرات</div><div id="yOrders"></div><div class="sec">المصاريف <b class="or" id="yExpT"></b></div><div id="yExp"></div></section>
+
+<section class="page" id="settings"><h2>الإعدادات</h2>
+<div class="card hide" id="instCard"><h3>تثبيت التطبيق</h3><p class="lb" style="margin-top:0">ثبّت T-TRACK على الشاشة الرئيسية ويشتغل زي أي برنامج، وبدون إنترنت.</p><button class="btn" id="instBtn">تثبيت على الجهاز</button></div><div class="card"><h3>هدف اليوم</h3><label class="lb">عدد الأوردرات المستهدف<input class="input" type="number" min="1" id="goalIn" onchange="setGoal()"></label></div>
+<div class="card"><h3>سعر الأوردر حسب الباتش</h3><div class="rg"><label class="lb">باتش 4 أوردر<input class="input" type="number" inputmode="decimal" id="r4" onchange="setRates()"></label><label class="lb">باتش 3 أوردر<input class="input" type="number" inputmode="decimal" id="r3" onchange="setRates()"></label><label class="lb">باتش 2 أوردر<input class="input" type="number" inputmode="decimal" id="r2" onchange="setRates()"></label><label class="lb">باتش 1 أوردر<input class="input" type="number" inputmode="decimal" id="r1" onchange="setRates()"></label></div></div><div class="card"><h3>النسخ الاحتياطي</h3><p class="lb" id="bkInfo" style="margin-top:0"></p><button class="btn" onclick="exportBackup()">تصدير نسخة احتياطية</button><label class="btn ghost" style="text-align:center;margin-top:10px">استرجاع نسخة<input type="file" accept=".json,application/json" hidden onchange="importBackup(event)"></label><button class="btn ghost" style="margin-top:10px" onclick="exportCSV()">تصدير الأوردرات CSV</button><button class="btn ghost" style="margin-top:10px" onclick="exportExpCSV()">تصدير المصاريف CSV</button></div>
+<div class="card"><h3>البيانات</h3><p class="lb" style="margin-top:0">كل البيانات محفوظة على جهازك فقط ومبتتبعتش لأي سيرفر.</p><button class="btn ghost bad" onclick="clearAll()">مسح كل البيانات</button></div></section></div>
+
+<nav class="nav"><div class="ni">
+<button class="t on" data-p="home" onclick="go('home')"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>الرئيسية</button>
+<button class="t" data-p="analytics" onclick="go('analytics')"><svg class="i" viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>تحليلات</button>
+<button class="fab" onclick="openOrder()" aria-label="أوردر جديد"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+<button class="t" data-p="history" onclick="go('history')"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>السجل</button>
+<button class="t" data-p="settings" onclick="go('settings')"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>الإعدادات</button></div></nav>
+
+<div class="mb" id="om" onclick="if(event.target===this)closeOrder()"><div class="modal"><div class="mh"><h3 id="mTitle">أوردر جديد</h3><button class="x" onclick="closeOrder()" aria-label="إغلاق">✕</button></div>
+<div class="pay"><button id="pC" onclick="choosePay('cash')">💵 كاش</button><button id="pV" onclick="choosePay('visa')">💳 فيزا</button></div>
+<div class="f"><div><div class="lb">حجم الباتش (كام أوردر في الدفعة)</div><div class="chips" id="bCats"></div></div><div><label class="lb" for="duration">مدة الأوردر (دقيقة)</label><input class="input" id="duration" type="number" inputmode="numeric" min="0" placeholder="مثلاً 18"><div class="chips" data-for="duration"><button>10</button><button>15</button><button>20</button><button>30</button><button>40</button></div></div>
+<div><label class="lb" for="tips">Tips / إكرامية</label><input class="input" id="tips" type="number" inputmode="decimal" min="0" placeholder="0"><div class="chips" data-for="tips"><button>0</button><button>5</button><button>10</button><button>20</button></div></div>
+<div id="cashF" class="f"><div class="f2"><label class="lb">سعر الاستلام<input class="input" id="pickup" type="number" inputmode="decimal" oninput="calc()"></label><label class="lb">سعر التسليم<input class="input" id="delivery" type="number" inputmode="decimal" oninput="calc()"></label></div><label class="lb">المدفوع من العميل<input class="input" id="paid" type="number" inputmode="decimal" oninput="calc()"></label><div class="calc hide" id="calcBox"></div></div></div>
+<button class="btn" onclick="saveOrder()">حفظ الأوردر</button></div></div>
+<div class="mb" id="em" onclick="if(event.target===this)closeExp()"><div class="modal"><div class="mh"><h3 id="eTitle">مصروف جديد</h3><button class="x" onclick="closeExp()" aria-label="إغلاق">✕</button></div>
+<div class="f"><div><div class="lb">النوع</div><div class="chips" id="eCats"></div></div>
+<div><label class="lb" for="eAmt">المبلغ</label><input class="input" id="eAmt" type="number" inputmode="decimal" min="0" placeholder="0"><div class="chips" data-for="eAmt"><button>20</button><button>50</button><button>100</button><button>200</button></div></div>
+<label class="lb">ملاحظة (اختياري)<input class="input" id="eNote" type="text" maxlength="60" placeholder="مثلاً وجبة غدا"></label></div>
+<button class="btn" onclick="saveExp()">حفظ المصروف</button></div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const KEY='ttrack_v7_data',$=id=>document.getElementById(id),C=339.3;
+let data=load(),pay='cash',editId=null,period='week',pOff=0,tt;
+function norm(d){d=d&&Array.isArray(d.orders)?d:{orders:[],shifts:{}};d.shifts=d.shifts||{};d.expenses=Array.isArray(d.expenses)?d.expenses:[];d.settings=Object.assign({goal:20,lastBackup:0,lastPay:'cash',lastBatch:1},d.settings);d.settings.rates=Object.assign({1:26,2:24,3:22,4:20},d.settings.rates);return d}
+function load(){try{return norm(JSON.parse(localStorage.getItem(KEY)))}catch{return norm()}}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch{toast('مفيش مساحة تخزين كفاية')}renderAll()}
+const pad=n=>String(n).padStart(2,'0'),num=v=>Number(v)||0,uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+''+Math.random();
+const dk=(d=new Date())=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`,today=()=>dk(),hm=()=>{let n=new Date();return pad(n.getHours())+':'+pad(n.getMinutes())};
+const money=n=>(Number(n)||0).toLocaleString('en-US',{maximumFractionDigits:2})+' ج.م',dayOs=d=>data.orders.filter(o=>o.date===d),shift=d=>data.shifts[d]||{start:'',end:''};
+const sum=(a,f)=>a.reduce((s,o)=>s+num(f(o)),0),diffOf=os=>sum(os.filter(o=>o.pay==='cash'),o=>o.delivery-o.pickup);
+function hours(a,b){if(!a||!b)return 0;let[x,y]=a.split(':').map(Number),[p,q]=b.split(':').map(Number),m=p*60+q-x*60-y;if(m<0)m+=1440;return m/60}
+const liveH=d=>{let s=shift(d);return s.start&&!s.end&&d===today()?hours(s.start,hm()):hours(s.start,s.end)};
+const rate=(n,h)=>h>0.05?(n/h).toFixed(1):'—';
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===id));document.querySelectorAll('.nav .t').forEach(b=>b.classList.toggle('on',b.dataset.p===id));scrollTo(0,0);renderAll()}
+function renderAll(){renderHome();renderAnalytics();renderHistory();renderSettings()}
+function toast(m,act){let t=$('toast');t.innerHTML='';let s=document.createElement('span');s.textContent=m;t.append(s);if(act){let b=document.createElement('button');b.textContent=act.l;b.onclick=()=>{act.f();t.classList.remove('on')};t.append(b)}t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),act?5000:2200)}
+const buzz=()=>navigator.vibrate&&navigator.vibrate(15);
+
+const earn=o=>o.batch?num(data.settings.rates[o.batch]):0;
+/* shift */
+function saveShift(){data.shifts[today()]={start:$('sStart').value,end:$('sEnd').value};persist()}
+function toggleShift(){let s=shift(today()),run=s.start&&!s.end;if(run){data.shifts[today()]={start:s.start,end:hm()};toast('الشيفت خلص. تعبت النهارده، ربنا يعوض عليك')}else{data.shifts[today()]={start:hm(),end:''};toast('الشيفت بدأ، ربنا يرزقك')}buzz();persist()}
+function secs(st){let[a,b]=st.split(':').map(Number),n=new Date(),s=n.getHours()*3600+n.getMinutes()*60+n.getSeconds()-a*3600-b*60;return s<0?s+86400:s}
+function renderLive(){let d=today(),s=shift(d),run=s.start&&!s.end;$('clock').textContent=new Date().toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});
+if(run){let t=secs(s.start);$('timer').textContent=`${pad(t/3600|0)}:${pad(t%3600/60|0)}:${pad(t%60)}`}else{let h=liveH(d);$('timer').textContent=h?`${h|0} س ${pad(Math.round(h%1*60))} د`:'—'}
+$('hRate').textContent=rate(dayOs(d).length,liveH(d))}
+function renderHome(){let d=today(),os=dayOs(d),s=shift(d),run=s.start&&!s.end,g=data.settings.goal,n=os.length,hr=new Date().getHours();
+$('hCount').textContent=n;$('ringFg').style.strokeDashoffset=C*(1-Math.min(1,n/g));
+$('hero').classList.toggle('run',!!run);$('sState').textContent=run?'الشيفت شغال':s.start?'الشيفت خلص':'لسه مبدأتش';
+$('shiftBtn').textContent=run?'إنهاء الشيفت':'ابدأ الشيفت';$('shiftBtn').className='btn'+(run?' stop':'');
+$('goalTxt').textContent=n>=g?`الهدف ${g} أوردر اتحقق ✓`:`باقي ${g-n} على هدف ${g} أوردر`;
+$('greet').textContent=(hr<12?'صباح الخير':hr<18?'نهارك سعيد':'مساء الخير')+' يا طيار، يا رب يكون يومك سعيد. استعن بالله وقول توكلت على الله، وربنا يفتحها عليك. اللهم آمين.';
+$('hDur').textContent=n?(sum(os,o=>o.duration)/n).toFixed(0)+' د':'—';$('hTips').textContent=money(sum(os,o=>o.tips));$('hDiff').textContent=money(diffOf(os));
+$('sStart').value=s.start||'';$('sEnd').value=s.end||'';
+$('bk').classList.toggle('hide',!(data.orders.length>=10&&Date.now()-data.settings.lastBackup>6048e5));
+let E=sum(os,earn),T=sum(os,o=>o.tips),X=sum(dayEs(d),e=>e.amount),N=E+T-X;$('pfNet').textContent=money(N);$('pfNet').style.color=N<0?'var(--rd)':'var(--gr)';$('pfE').textContent=money(E);$('pfT').textContent=money(T);$('pfX').textContent=money(X);list('hOrders',os);expList('hExp',dayEs(d),'hExpT');renderLive()}
+setInterval(renderLive,1000);
+
+/* orders */
+function list(id,os){let t=$(id);if(!os.length){t.innerHTML='<div class="empty">مفيش أوردرات هنا لسه</div>';return}
+t.innerHTML=os.slice().sort((a,b)=>b.createdAt-a.createdAt).map(o=>`<div class="od"><div class="row"><b>أوردر ${o.time||''}</b><span class="badge ${o.pay==='visa'?'visa':''}">${o.pay==='visa'?'فيزا':'كاش'}</span></div><div class="row lb"><span>المدة ${o.duration||0} دقيقة${o.batch?` · باتش ${o.batch} (${money(earn(o))})`:''}</span><span>Tips ${money(o.tips)}</span></div>${o.pay==='cash'?`<div class="row lb"><span>استلام ${money(o.pickup)} · تسليم ${money(o.delivery)}</span><b style="color:var(--ink)">الفرق ${money(num(o.delivery)-num(o.pickup))}</b></div>`:''}<div class="row"><span></span><span><button class="ib" onclick="openOrder('${o.id}')">تعديل</button> <button class="ib bad" onclick="delOrder('${o.id}')">حذف</button></span></div></div>`).join('')}
+function openOrder(id=null){editId=id;let o=id?data.orders.find(x=>x.id===id):null;$('mTitle').textContent=id?'تعديل أوردر':'أوردر جديد';
+for(let k of['duration','tips','pickup','delivery','paid'])$(k).value=o?.[k]??'';choosePay(o?.pay||data.settings.lastPay||'cash');setBatch(o?.batch||data.settings.lastBatch||1);calc();$('om').classList.add('on');setTimeout(()=>$('duration').focus(),250)}
+function closeOrder(){$('om').classList.remove('on')}
+function choosePay(p){pay=p;$('pC').classList.toggle('on',p==='cash');$('pV').classList.toggle('on',p==='visa');$('cashF').classList.toggle('hide',p==='visa')}
+function calc(){let b=$('calcBox'),dl=$('delivery').value;b.classList.toggle('hide',dl==='');if(dl==='')return;let p=num($('pickup').value),d=num(dl),pd=num($('paid').value);b.innerHTML=`<span>فرق الكاش <b>${money(d-p)}</b></span>`+($('paid').value!==''?`<span>الباقي للعميل <b>${money(Math.max(0,pd-d))}</b></span>`:'')}
+document.querySelectorAll('.chips').forEach(c=>c.onclick=e=>{if(c.dataset.for&&e.target.tagName==='BUTTON'){$(c.dataset.for).value=e.target.textContent;buzz()}});
+addEventListener('keydown',e=>{if(e.key==='Escape'){closeOrder();closeExp()}});
+function saveOrder(){let du=$('duration').value,ti=$('tips').value;if(du===''){toast('دخل مدة الأوردر');return}if(pay==='cash'&&['pickup','delivery','paid'].some(k=>$(k).value==='')){toast('كمّل خانات الكاش');return}
+let old=editId?data.orders.find(o=>o.id===editId):null,n=new Date(),c=pay==='cash',o={id:editId||uid(),date:old?.date||today(),time:old?.time||hm(),createdAt:old?.createdAt||n.getTime(),pay,batch:oB,duration:num(du),tips:num(ti),pickup:c?num($('pickup').value):0,delivery:c?num($('delivery').value):0,paid:c?num($('paid').value):0};
+if(old)data.orders=data.orders.map(x=>x.id===editId?o:x);else data.orders.push(o);data.settings.lastPay=pay;data.settings.lastBatch=oB;closeOrder();buzz();persist();toast(old?'اتعدل الأوردر':'اتسجل الأوردر')}
+function delOrder(id){let o=data.orders.find(x=>x.id===id);data.orders=data.orders.filter(x=>x.id!==id);persist();toast('اتمسح الأوردر',{l:'تراجع',f:()=>{data.orders.push(o);persist()}})}
+
+/* expenses */
+const EC={'أكل':'🍔','بنزين':'⛽','صيانة':'🔧','تاني':'📦'};let eCat='أكل',eEdit=null,oB=1;function setBatch(n){oB=n;$('bCats').innerHTML=[4,3,2,1].map(k=>`<button class="${k===n?'on':''}" onclick="setBatch(${k})">${k} · ${data.settings.rates[k]} ج</button>`).join('')}
+const dayEs=d=>data.expenses.filter(e=>e.date===d);
+function setCat(c){eCat=c;$('eCats').innerHTML=Object.keys(EC).map(k=>`<button class="${k===c?'on':''}" onclick="setCat('${k}')">${EC[k]} ${k}</button>`).join('')}
+function openExp(id=null){eEdit=id;let e=id?data.expenses.find(x=>x.id===id):null;$('eTitle').textContent=id?'تعديل مصروف':'مصروف جديد';$('eAmt').value=e?.amount??'';$('eNote').value=e?.note??'';setCat(e?.cat||'أكل');$('em').classList.add('on');setTimeout(()=>$('eAmt').focus(),250)}
+function closeExp(){$('em').classList.remove('on')}
+function saveExp(){let a=num($('eAmt').value);if(a<=0){toast('دخل المبلغ');return}let old=eEdit?data.expenses.find(x=>x.id===eEdit):null,e={id:eEdit||uid(),date:old?.date||today(),time:old?.time||hm(),createdAt:old?.createdAt||Date.now(),cat:eCat,amount:a,note:$('eNote').value.trim()};
+if(old)data.expenses=data.expenses.map(x=>x.id===eEdit?e:x);else data.expenses.push(e);closeExp();buzz();persist();toast(old?'اتعدل المصروف':'اتسجل المصروف')}
+function delExp(id){let e=data.expenses.find(x=>x.id===id);data.expenses=data.expenses.filter(x=>x.id!==id);persist();toast('اتمسح المصروف',{l:'تراجع',f:()=>{data.expenses.push(e);persist()}})}
+function expList(id,es,tot){$(tot).textContent=es.length?money(sum(es,e=>e.amount)):'';let t=$(id);if(!es.length){t.innerHTML='<div class="empty">مفيش مصاريف متسجلة</div>';return}
+t.innerHTML=es.slice().sort((a,b)=>b.createdAt-a.createdAt).map(e=>`<div class="od ex"><div class="ic">${EC[e.cat]||'📦'}</div><div class="m"><div><b>${e.cat}</b> <span class="lb">${e.time||''}</span></div><div class="lb">${(e.note||'').replace(/[<>&]/g,'')}</div></div><div style="text-align:left"><b>${money(e.amount)}</b><div><button class="ib" onclick="openExp('${e.id}')">تعديل</button> <button class="ib bad" onclick="delExp('${e.id}')">حذف</button></div></div></div>`).join('')}
+function exportExpCSV(){let q=x=>'"'+String(x??'').replaceAll('"','""')+'"',rows=[['date','time','category','amount','note'],...data.expenses.map(e=>[e.date,e.time,e.cat,e.amount,e.note])];dl('T-TRACK-expenses.csv',new Blob(['\ufeff'+rows.map(r=>r.map(q).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}))}
+
+/* history */
+function renderHistory(){let d=$('hDate').value||today();$('hDate').value=d;let os=dayOs(d);$('yCount').textContent=os.length;$('yRate').textContent=rate(os.length,liveH(d));$('yTips').textContent=money(sum(os,o=>o.tips));$('yDiff').textContent=money(diffOf(os));$('yNet').textContent=money(sum(os,earn)+sum(os,o=>o.tips)-sum(dayEs(d),e=>e.amount));list('yOrders',os);expList('yExp',dayEs(d),'yExpT')}
+
+/* analytics */
+function range(off){let n=new Date(),s,e;if(period==='week'){s=new Date(n);s.setDate(n.getDate()-(n.getDay()+6)%7+off*7);s.setHours(0,0,0,0);e=new Date(s);e.setDate(e.getDate()+7)}else{s=new Date(n.getFullYear(),n.getMonth()+off,1);e=new Date(s.getFullYear(),s.getMonth()+1,1)}let r=[];for(let d=new Date(s);d<e;d.setDate(d.getDate()+1))r.push(dk(d));return r}
+function stat(ds){let os=data.orders.filter(o=>ds.includes(o.date)),h=ds.reduce((a,d)=>a+liveH(d),0);return{os,h,earn:sum(os,earn),exp:sum(data.expenses.filter(e=>ds.includes(e.date)),e=>e.amount),n:os.length,tips:sum(os,o=>o.tips),diff:diffOf(os),dur:os.length?sum(os,o=>o.duration)/os.length:0,r:h>0.05?os.length/h:0}}
+function delta(el,c,p,f=v=>v){let e=$(el);if(!c&&!p){e.textContent='';e.className='dl';return}if(!p){e.textContent='جديد';e.className='dl up';return}let d=c-p;e.className='dl '+(d>0?'up':d<0?'down':'flat');e.textContent=(d>0?'▲ ':d<0?'▼ ':'= ')+f(Math.abs(d))+' عن الفترة اللي فاتت'}
+function setPeriod(p){period=p;pOff=0;$('bW').classList.toggle('on',p==='week');$('bM').classList.toggle('on',p==='month');renderAnalytics()}
+function mv(n){pOff+=n;renderAnalytics()}
+function renderAnalytics(){let ds=range(pOff),s=stat(ds),p=stat(range(pOff-1)),fd=d=>new Date(d+'T12:00:00');
+$('pTitle').textContent=period==='week'?`${fd(ds[0]).toLocaleDateString('ar-EG',{day:'numeric',month:'short'})} — ${fd(ds[6]).toLocaleDateString('ar-EG',{day:'numeric',month:'short'})}`:fd(ds[0]).toLocaleDateString('ar-EG',{month:'long',year:'numeric'});
+$('aCount').textContent=s.n;$('aHours').textContent=s.h.toFixed(1);$('aRate').textContent=s.r?s.r.toFixed(1):'—';$('aTips').textContent=money(s.tips);$('aDiff').textContent=money(s.diff);$('aTpo').textContent=s.n?money(s.tips/s.n):'—';$('aExp').textContent=money(s.exp);$('aEarn').textContent=money(s.earn);$('aNet').textContent=money(s.earn+s.tips-s.exp);delta('dNet',s.earn+s.tips-s.exp,p.earn+p.tips-p.exp,money);
+delta('dCount',s.n,p.n);delta('dRate',s.r,p.r,v=>v.toFixed(1));delta('dTips',s.tips,p.tips,money);
+let per=ds.map(d=>({d,c:dayOs(d).length})),best=per.reduce((a,b)=>b.c>a.c?b:a,{c:0}),max=Math.max(1,best.c);
+$('aIns').textContent=best.c?`أنشط يوم: ${fd(best.d).toLocaleDateString('ar-EG',{weekday:'long',day:'numeric'})} بـ ${best.c} أوردر.`:'لسه مفيش بيانات في الفترة دي.';
+let cd=period==='week'?per:per.filter((x,i)=>i%3===0||i===per.length-1);
+$('chart').innerHTML=cd.map(x=>`<div class="bc"><div class="bv">${x.c||''}</div><div class="bar${x.c&&x.c===best.c?' top':''}" style="height:${Math.max(2,x.c/max*100)}%"></div><div class="bl">${period==='week'?fd(x.d).toLocaleDateString('ar-EG',{weekday:'short'}):fd(x.d).getDate()}</div></div>`).join('');
+let H=Array(24).fill(0);s.os.forEach(o=>{let m=(o.time||'').match(/^(\d{1,2}):/);if(m)H[+m[1]]++});let hx=Math.max(1,...H);
+$('peak').innerHTML=H.map((c,h)=>({c,h})).filter(x=>x.c).sort((a,b)=>b.c-a.c).slice(0,6).map(x=>`<div class="hr"><span>${pad(x.h)}:00</span><div class="tr"><div class="fl" style="width:${x.c/hx*100}%"></div></div><b>${x.c}</b></div>`).join('')||'<div class="empty">الذروة هتظهر لما تسجل أوردرات</div>';
+let c=s.os.filter(o=>o.pay==='cash').length,v=s.n-c;$('cC').textContent=c;$('cV').textContent=v;$('sC').style.width=(s.n?c/s.n*100:0)+'%';$('sV').style.width=(s.n?v/s.n*100:0)+'%'}
+
+/* settings + backup */
+function renderSettings(){$('goalIn').value=data.settings.goal;for(let k=1;k<=4;k++)$('r'+k).value=data.settings.rates[k];$('bkInfo').textContent=data.settings.lastBackup?'آخر نسخة: '+new Date(data.settings.lastBackup).toLocaleDateString('ar-EG',{day:'numeric',month:'long'}):'لسه مأخدتش نسخة احتياطية.'}
+function setRates(){for(let k=1;k<=4;k++){let v=num($('r'+k).value);if(v>0)data.settings.rates[k]=v}persist();toast('اتحفظت الأسعار')}
+function setGoal(){let g=Math.max(1,Math.round(num($('goalIn').value))||20);data.settings.goal=g;persist();toast('اتحفظ الهدف')}
+function dl(name,blob){let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function exportBackup(){data.settings.lastBackup=Date.now();dl('T-TRACK-backup-'+today()+'.json',new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));persist();toast('اتصدرت النسخة')}
+function importBackup(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let v=JSON.parse(r.result);if(!Array.isArray(v.orders)||typeof v.shifts!=='object')throw 0;if(confirm('الاسترجاع هيستبدل البيانات الحالية. متأكد؟')){data=norm(v);persist();toast('اتسترجعت البيانات')}}catch{toast('ملف النسخة مش صالح')}e.target.value=''};r.readAsText(f)}
+function exportCSV(){let q=x=>'"'+String(x??'').replaceAll('"','""')+'"',rows=[['date','time','payment','duration_minutes','tips','pickup','delivery','paid','difference'],...data.orders.map(o=>[o.date,o.time,o.pay,o.duration,o.tips,o.pickup,o.delivery,o.paid,o.pay==='cash'?num(o.delivery)-num(o.pickup):0])];dl('T-TRACK-orders.csv',new Blob(['\ufeff'+rows.map(r=>r.map(q).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'}))}
+function clearAll(){if(confirm('هيمسح كل الأوردرات والشيفتات نهائيًا. متأكد؟')){data=norm();persist();toast('اتمسحت البيانات')}}
+$('hDate').value=today();renderAll();
+let ip;addEventListener('beforeinstallprompt',e=>{e.preventDefault();ip=e;$('instCard').classList.remove('hide')});
+$('instBtn').onclick=async()=>{if(!ip)return;ip.prompt();await ip.userChoice;ip=null;$('instCard').classList.add('hide')};
+addEventListener('appinstalled',()=>toast('اتثبت التطبيق'));
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>
